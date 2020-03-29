@@ -11,9 +11,17 @@ public class Main {
         Person patient1 = patientCreator.createPerson("Patient Susan");
         Person patient2 = patientCreator.createPerson("Patient Max");
 
-        System.out.println(doctor1.getClass() + " Name: " + doctor1.getName());
-        System.out.println(doctor2.getClass() + " Name: " + doctor2.getName());
-        System.out.println(patient1.getClass() + " Name: " + patient1.getName());
-        System.out.println(patient2.getClass() + " Name: " + patient2.getName());
+        String currentUser = "Wrong user"; //emulation of context working method
+
+        PatientDoctorService diseaseHistory1 = new ProxyDiseaseHistory(currentUser, doctor1, doctor2);
+
+        System.out.println("Patient name: " + diseaseHistory1.getPatient() +" Doctor name: " + diseaseHistory1.getDoctor());
+
+        currentUser = doctor2.getName(); //emulation of context working method
+
+        PatientDoctorService diseaseHistory2 = new ProxyDiseaseHistory(currentUser, patient2, doctor2);
+
+        System.out.println("Patient name: " + diseaseHistory2.getPatient().getName() +" Doctor name: " + diseaseHistory2.getDoctor().getName());
+
     }
 }
