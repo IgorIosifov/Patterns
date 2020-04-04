@@ -1,10 +1,12 @@
 package ru.geekbrains.Lesson_3;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Main {
+    private static Connection connection;
 
     public static void main(String[] args) {
         Creator doctorCreator = new DoctorCreator();
@@ -47,6 +49,10 @@ public class Main {
             handler.handle(rq);
         }
         handler.handle(new Request("d"));
+
+        PersonMapper personMapper = new PersonMapper(connection);
+        personMapper.findById(1, Patient.class);
+        personMapper.selectAll(connection, Patient.class);
 
     }
 }
