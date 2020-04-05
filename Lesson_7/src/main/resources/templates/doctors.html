@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table  class="table table-hover" th:if="${doctors.size() > 0}">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="i : ${doctors}">
+        <td th:text="${i.id}"></td>
+        <td th:text="${i.name}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
